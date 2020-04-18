@@ -4,6 +4,8 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 const __root = process.cwd();
 const pkg = require(`${__root}/package.json`);
 
+const { years: YEARS } = require(`${__root}/config/config.json`);
+
 const BANNER_METADATA = [
   "/*!",
   ` * ${pkg.name} - ${pkg.description}`,
@@ -46,7 +48,8 @@ module.exports = {
   },
   plugins: [
     new DefinePlugin({
-      ENVIRONMENT: process.env.NODE_ENV,
+      ENVIRONMENT: JSON.stringify(process.env.NODE_ENV),
+      YEARS: JSON.stringify(YEARS),
     }),
     new BannerPlugin({
       banner: BANNER_METADATA,
