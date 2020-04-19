@@ -3,6 +3,7 @@ import Typography from "@material-ui/core/Typography";
 import useStyles from "./styles";
 import Grid from "@material-ui/core/Grid";
 import StandingsList from "containers/StandingsList";
+import SeasonRacesList from "containers/SeasonRacesList";
 
 const Home = () => {
   const classes = useStyles();
@@ -14,7 +15,7 @@ const Home = () => {
           F1 Dashboard
         </Typography>
 
-        <StandingsList />
+        <SeasonRacesList />
       </Grid>
     </Grid>
   );
