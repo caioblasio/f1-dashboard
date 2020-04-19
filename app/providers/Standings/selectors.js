@@ -11,7 +11,26 @@ const getData = () =>
   createSelector(selectState, (state) =>
     state
       .get("data")
-      .map((entry) => {})
+      .map((entry) => {
+        const standingsTable = entry.getIn(["MRData", "StandingsTable"]);
+        const championDriverstandings = standingsTable
+          .get("StandingsLists")
+          .first()
+          .get("DriverStandings")
+          .first();
+        const championDriver = championDriverstandings.get("Driver");
+
+        return {
+          year: standingsTable.get("season"),
+          driver: `${championDriver.get("givenName")} ${championDriver.get(
+            "familyName"
+          )}`,
+          team: championDriverstandings.get("Constructors").first().get("name"),
+          nationality: championDriver.get("nationality"),
+          points: championDriverstandings.get("points"),
+          wins: championDriverstandings.get("wins"),
+        };
+      })
       .toJS()
   );
 

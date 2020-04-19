@@ -2,6 +2,7 @@ import React from "react";
 import Typography from "@material-ui/core/Typography";
 import useStyles from "./styles";
 import Grid from "@material-ui/core/Grid";
+import StandingsList from "containers/StandingsList";
 
 const Home = () => {
   const classes = useStyles();
@@ -12,6 +13,8 @@ const Home = () => {
         <Typography variant="h4" component="h1">
           F1 Dashboard
         </Typography>
+
+        <StandingsList />
       </Grid>
     </Grid>
   );

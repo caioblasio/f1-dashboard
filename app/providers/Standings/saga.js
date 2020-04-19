@@ -9,7 +9,6 @@ import {
 
 export function* fetchStandingsAPI() {
   yield put(fetchStandingsWaiting());
-
   try {
     const data = yield all(
       YEARS.map((year) => call(fetchData, apiStandingsUrl(year)))

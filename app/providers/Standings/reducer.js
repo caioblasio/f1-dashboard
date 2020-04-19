@@ -20,10 +20,9 @@ const reducer = (state = initialState, { type, payload }) => {
 
     case FETCH_STANDINGS_SUCCESS:
       const currData = state.get("data");
-      const { data } = payload;
       return state
         .set("isWaiting", false)
-        .set("data", currData.merge(fromJS(data)));
+        .set("data", currData.merge(fromJS(payload)));
 
     case FETCH_STANDINGS_FAILURE:
       return state.set("isWaiting", false).set("error", payload);
